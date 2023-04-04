@@ -52,9 +52,8 @@ export class App extends Component {
           images: [...prevState.images, ...data.hits],
         }));
         this.setState({ isLoad: false });
-        // console.log(data);
        if (data.hits.length < 12) {
-         console.log(data.hits.length);
+        //  console.log(data.hits.length);
          this.setState({ clickOnLoadMore: false });
        }
       }
