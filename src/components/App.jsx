@@ -52,9 +52,16 @@ export class App extends Component {
           images: [...prevState.images, ...data.hits],
         }));
         this.setState({ isLoad: false });
-      } catch (error) {
+        // console.log(data);
+       if (data.hits.length < 12) {
+         console.log(data.hits.length);
+         this.setState({ clickOnLoadMore: false });
+       }
+      }
+         catch (error) {
         alert('Something wrong');
       }
+     
     }
   }
 
@@ -87,9 +94,12 @@ export class App extends Component {
       this.setState({ ModalOpen: false });
     }
   };
+  
   handleLoadMore = async () => {
     this.setState(prev => ({ Page: prev.Page + 1 }));
+    this.setState({ clickOnLoadMore: true });
   };
+
   render() {
     const { isLoad } = this.state;
     const { largeImageURL } = this.state.modalImg;
